@@ -1,6 +1,35 @@
-frontend-nanodegree-arcade-game
+# FRONTEND-NANODEGREE-ARCADE-GAME
+
+
+This is my arcade game for the udacity nanodegree scholarship program. This game was built with ES6 and Jquery the code is object oriented and fully functional as at 19/09/2018. This game was built by Michael Nwaokocha (Angelmikeal). 
+
+Email: nwaokocham@gmail.com
+
+Phone: +23407062426267
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+# HOW TO PLAY
+
+Move your player around the board and pick up the :stars: , you need to pick up 3 :stars: to 
+
+then get to the water to get to the next level, items :gem: and :hearts: are available to help you get to the next level by giving your player special powers, each :gem: last only 10 seconds and you only get 3 items per level the aim of the game is to see your highest, the enemy bugs average speed increases per level. 
+
+
+
+## DESKTOP CONTROLS
+
+Use the arrow keys to move the character around
+
+:arrow_up:  to move up
+
+:arrow_down: to move down
+
+:arrow_left: to move left
+
+:arrow_right: to move right
+
+
+### MOBILE CONTROLS
+
+Use the available controls to move character

@@ -70,13 +70,13 @@ class Enemy {
         if (player.hasOrangeGem === true) {
             this.speed = 30;
         } else {
-            this.speed = Math.random() * 400 + (15 * tracker.level);
+            this.speed = Math.random() * 400 + (10 * tracker.level);
         }
 
 
         if (this.x > 500) {
             this.x = Math.random() * -800;
-            this.speed = (Math.random() * 400) + (15 * tracker.level);;
+            this.speed = (Math.random() * 400) + (10 * tracker.level);;
 
         }
 
@@ -247,28 +247,6 @@ document.addEventListener('keydown', function (e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// ITEM TRACKING OBJECT 
-
-var tracker = {
-    itempresent : false,
-    itemAvailable : 3,
-    starPresent: false,
-    starToPick: 3,
-    starPicked: 0,
-    level: 1,
-    totalStar: 0,
-    update: function () {
-        $('.level').text(`${this.level}`);
-        $('.star-count').text(`${this.starPicked}`);
-        $('.total-star-count').text(`${this.totalStar}`);
-
-        if (this.level >= 10 && greenGemPresent === false) {
-            greenGemPresent = true;
-            allItems.push(greenGem);
-        }
-    }
-}
-
 
 // GEM CONSTRUCTOR
 
@@ -370,6 +348,28 @@ let star = new itemConstructor(0, 0, 'images/Star.png');
 // GEM ARRAY 
 
 var allItems = [blueGem, orangeGem, heart, rock];
+
+// ITEM TRACKING OBJECT 
+
+var tracker = {
+    itempresent: false,
+    itemAvailable: 3,
+    starPresent: false,
+    starToPick: 3,
+    starPicked: 0,
+    level: 1,
+    totalStar: 0,
+    update: function () {
+        $('.level').text(`${this.level}`);
+        $('.star-count').text(`${this.starPicked}`);
+        $('.total-star-count').text(`${this.totalStar}`);
+
+        if (this.level >= 10 && greenGemPresent === false) {
+            greenGemPresent = true;
+            allItems.push(greenGem);
+        }
+    }
+}
 
 // mobile view controls
 
