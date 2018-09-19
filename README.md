@@ -1,4 +1,5 @@
-# FRONTEND-NANODEGREE-ARCADE-GAME
+FRONTEND-NANODEGREE-ARCADE-GAME
+=================================================================================================
 
 
 This is my arcade game for the udacity nanodegree scholarship program. This game was built with ES6 and Jquery the code is object oriented and fully functional as at 19/09/2018. This game was built by Michael Nwaokocha (Angelmikeal). 
@@ -6,7 +7,6 @@ This is my arcade game for the udacity nanodegree scholarship program. This game
 Email: nwaokocham@gmail.com
 
 Phone: +23407062426267
-===============================
 
 
 # HOW TO PLAY
