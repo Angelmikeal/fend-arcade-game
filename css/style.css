@@ -197,7 +197,7 @@ button {
 
 @media screen and  (max-width: 770px){
      .controls {
-         display: block;
+         display: flex;
      }
 
      .stats-container{
