@@ -92,7 +92,7 @@ class Enemy {
                     crush.play();
                     this.x = 3000;
                     player.hasRock = false;
-                    player.hasItem = true;
+                    tracker.itempresent = false;
                 } else {
                     hit.play();
                     player.life--
@@ -301,7 +301,7 @@ class itemConstructor {
                     if (this === rock) {
                         powerUp.play();
                         tracker.itemAvailable -= 1;
-                        tracker.itempresent = false;
+                        player.hasItem = true;
                         player.hasRock = true;
                     }
 
