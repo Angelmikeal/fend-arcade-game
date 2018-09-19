@@ -9,6 +9,7 @@ Email: nwaokocham@gmail.com
 Phone: +2347062426267
 
 
+
 # HOW TO PLAY
 
 Move your player around the board and pick up the :stars: , you need to pick up 3 :stars: to 
