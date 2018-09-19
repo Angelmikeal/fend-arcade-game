@@ -93,6 +93,7 @@ class Enemy {
                     this.x = 3000;
                     player.hasRock = false;
                     tracker.itempresent = false;
+                    player.hasItem = false;
                 } else {
                     hit.play();
                     player.life--
@@ -139,6 +140,7 @@ class PlayerFunction {
                 tracker.level += 1;
                 tracker.starToPick = 3;
                 tracker.itemAvailable = 3;
+                tracker.itempresent = false;
                 tracker.starPicked = 0;
 
             }
