@@ -13,7 +13,7 @@ Phone: +2347062426267
 # HOW TO PLAY
 
 Move your player around the board and pick up the :stars: , you need to pick up 3 :stars: to 
-then get to the water to start the next level, items :gem: and :hearts: are available to help you get to the next level by giving your player special powers, each :gem: last only 10 seconds and you only get 3 items per level the aim of the game is to see your highest level, the enemy bugs average speed increases per level. 
+then get to the water to start the next level, items :gem: and :hearts: and :rock: are available to help you get to the next level by giving your player special powers, each :gem: last only 10 seconds and you only get 3 items per level the aim of the game is to see your highest level, the enemy bugs average speed increases per level. 
 
 
 
