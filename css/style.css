@@ -14,9 +14,9 @@ body {
 
 .modal-begin {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   /*display: none;*/
-  position: fixed; /* Stay in place */
+  position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
@@ -80,9 +80,9 @@ body {
 
 .modal-end {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: none;
-  position: fixed; /* Stay in place */
+  position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
