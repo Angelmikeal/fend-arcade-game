@@ -1,13 +1,96 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <div class="modal-begin">
+        <div class="modal-content">
+            <section class="message">
+                <h1>Select Character</h1>
+                <div class="Character-roll">
+                    <button class="character alien-boy"></button>
+                    <button class="character cat-girl"></button>
+                    <button class="character horn-girl"></button>
+                    <button class="character pink-girl"></button>
+                    <button class="character princess-girl"></button>
+                </div>
+                <p class="tip"></p>
+            </section>
+            <section class="actions">
+                <button id="start">START</button>
+            </section>
+        </div>
+    </div>
+    <div class="modal-end">
+        <div class="modal-content">
+            <section class="message">
+                <p>Well done, you completed the game in
+                    <span class="hour"></span> hours
+                    <span class="minutes"></span> minutes
+                    <span class="seconds"></span> seconds.
+                    you got to  Level-
+                    <span class="level">1</span>, and picked up 
+                    <span class="star"></span>
+                    <span class="total-star-count"></span> stars.
+                </p>
+            </section>
+            <section class="actions">
+                <p>play Again?</p>
+                <button class="yes-play">yes</button>
+                <button class="no-play">no</button>
+            </section>
+        </div>
+    </div>
+    <div class="stats-container">
+        <span class="heart-container">
+            <span class="heart"></span>
+            <span>x
+                <span class="life">4</span>
+            </span>
+        </span>
+        <span class="star-container">
+            <span class="star"></span>
+            <span>x
+                <span class="star-count">0</span>
+            </span>
+        </span>
+        <span class="clock">
+            <span class="hour">00</span>:
+            <span class="minutes">00</span>:
+            <span class="seconds">00</span>
+        </span>
+        <span class="level-container">
+            Level-
+            <span class="level">1</span>
+        </span>
+    </div>
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+    <div class="controls">
+        <div class="controlUp">
+            <button id="up">UP</button>
+        </div>
+        <div class="control-l-r">
+            <button id="left">LEFT</button>
+            <button id="right">RIGHT</button>
+        </div>
+        <div class="controlDown">
+            <button id="down">DOWN</button>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 </body>
+
 </html>

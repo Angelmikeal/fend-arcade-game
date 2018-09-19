@@ -1,32 +1,33 @@
 /* Engine.js
- * This file provides the game loop functionality (update entities and render),
- * draws the initial game board on the screen, and then calls the update and
- * render methods on your player and enemy objects (defined in your app.js).
- *
- * A game engine works by drawing the entire game screen over and over, kind of
- * like a flipbook you may have created as a kid. When your player moves across
- * the screen, it may look like just that image/character is moving or being
- * drawn but that is not the case. What's really happening is the entire "scene"
- * is being drawn over and over, presenting the illusion of animation.
- *
- * This engine makes the canvas' context (ctx) object globally available to make 
- * writing app.js a little simpler to work with.
- */
+* This file provides the game loop functionality (update entities and render),
+* draws the initial game board on the screen, and then calls the update and
+* render methods on your player and enemy objects (defined in your app.js).
+*
+* A game engine works by drawing the entire game screen over and over, kind of
+* like a flipbook you may have created as a kid. When your player moves across
+* the screen, it may look like just that image/character is moving or being
+* drawn but that is not the case. What's really happening is the entire "scene"
+* is being drawn over and over, presenting the illusion of animation.
+*
+* This engine makes the canvas' context (ctx) object globally available to make 
+* writing app.js a little simpler to work with.
+*/
 
-var Engine = (function(global) {
+var Engine = (function (global) {
+    var item;
+
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
     var doc = global.document,
         win = global.window,
-        canvas = doc.createElement('canvas'),
-        ctx = canvas.getContext('2d'),
+        canvas = doc.getElementById('canvas');
+    var ctx = canvas.getContext('2d'),
         lastTime;
 
     canvas.width = 505;
-    canvas.height = 606;
-    doc.body.appendChild(canvas);
+    canvas.height = 600;
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -63,9 +64,12 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
-        lastTime = Date.now();
-        main();
+        // GAME INITIALIZING FUNCTION ATTACHED TO THE WINDOW OBJECT
+        window.gameInit = function () {
+            lastTime = Date.now();
+            main();
+            timer();
+        }
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -90,10 +94,18 @@ var Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function(enemy) {
+        allEnemies.forEach(function (enemy) {
             enemy.update(dt);
         });
         player.update();
+        tracker.update();
+        if (tracker.itempresent === true) {
+            item.update();
+        }
+
+        if (tracker.starPresent === true) {
+            star.update();
+        }
     }
 
     /* This function initially draws the "game level", it will then call
@@ -107,19 +119,19 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
-            ],
+            'images/water-block.png',   // Top row is water
+            'images/stone-block.png',   // Row 1 of 4 of stone
+            'images/stone-block.png',   // Row 2 of 4 of stone
+            'images/stone-block.png',   // Row 3 of 4 of stone
+            'images/stone-block.png',   // Row 4 of 4 of stone
+            'images/grass-block.png'    // Row 1 of 1 of grass
+        ],
             numRows = 6,
             numCols = 5,
             row, col;
-        
+
         // Before drawing, clear existing canvas
-        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
 
         /* Loop through the number of rows and columns we've defined above
          * and, using the rowImages array, draw the correct image for that
@@ -149,33 +161,88 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-        allEnemies.forEach(function(enemy) {
+        allEnemies.forEach(function (enemy) {
             enemy.render();
         });
 
         player.render();
+
+        // ITEM DROPING FUNCTION
+        (function () {
+            (function () {
+                // ARRAY OF Y POINT
+                let row = [124.5, 207.5, 290.5, 373.5];
+                // ARRAY OF X POINT
+                let rx = [25, 125, 225, 325, 425];
+                // GET RANDOM VALUES OF ARRAYS
+                let randomX = Math.floor(Math.random() * rx.length);
+                let randomY = Math.floor(Math.random() * row.length);
+                let randomItem = Math.floor(Math.random() * allItems.length);
+
+                if (tracker.itempresent === false && tracker.itemAvailable > 0) {
+                    // ASSIGN RANDOM X AND Y VALUES TO RANDOM ITEM
+                    allItems[randomItem].y = row[randomY];
+                    allItems[randomItem].x = rx[randomX];
+                    item = allItems[randomItem];
+                }
+            }())
+            if (player.hasItem === false && tracker.itemAvailable > 0) {
+                // RENDER RANDOM ITEM
+                item.render();
+                tracker.itempresent = true;
+            }
+        }());
+
+
+        // SAME PRINCIPLE AS THE RANDOM ITEM DROP EXCEPT FOR STARS
+        (function () {
+            let row = [124.5, 207.5, 290.5, 373.5];
+            let rx = [25, 125, 225, 325, 425];
+            let randomX = Math.floor(Math.random() * rx.length);
+            let randomY = Math.floor(Math.random() * row.length);
+            if (tracker.starToPick > 0.5 && tracker.starPresent === false) {
+                star.y = row[randomY];
+                star.x = rx[randomX];
+                tracker.starPresent = true;
+            }
+        }())
+
+        if (tracker.starToPick > 0.5) {
+            star.render();
+        }
+
+
     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
-     */
-    function reset() {
-        // noop
-    }
+
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
      */
+
     Resources.load([
         'images/stone-block.png',
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png',
+        'images/gem-blue.png',
+        'images/gem-green.png',
+        'images/gem-orange.png',
+        'images/Rock.png',
+        'images/Heart.png',
+        'images/Star.png'
     ]);
+
     Resources.onReady(init);
+
+
+
 
     /* Assign the canvas' context object to the global variable (the window
      * object when run in a browser) so that developers can use it more easily
