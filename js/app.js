@@ -1,7 +1,7 @@
 let sprite;
 let clock;
 let sfx = true;
-let greenGemPresent = false;
+let greenGemAvailable = false;
 let hour = $('.hour');
 let minutes = $('.minutes');
 let seconds = $('.seconds');
@@ -139,7 +139,6 @@ class PlayerFunction {
                 tracker.level += 1;
                 tracker.starToPick = 3;
                 tracker.itemAvailable = 3;
-                tracker.itempresent = false;
                 tracker.starPicked = 0;
 
             }
@@ -370,8 +369,8 @@ var tracker = {
         $('.star-count').text(`${this.starPicked}`);
         $('.total-star-count').text(`${this.totalStar}`);
 
-        if (this.level >= 10 && greenGemPresent === false) {
-            greenGemPresent = true;
+        if (this.level >= 15 && greenGemAvailable === false) {
+            greenGemAvailable = true;
             allItems.push(greenGem);
         }
     }
