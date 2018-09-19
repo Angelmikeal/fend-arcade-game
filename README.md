@@ -33,3 +33,7 @@ Use the arrow keys to move the character around
 ### MOBILE CONTROLS
 
 Use the available controls to move character
+
+
+## PLAY NOW 
+you can find the game [heres](https://angelmikeal.github.io/fend-arcade-game/)
