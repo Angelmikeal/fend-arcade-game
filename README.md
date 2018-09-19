@@ -36,4 +36,4 @@ Use the provided control buttons controls to move character
 
 
 ## PLAY NOW 
-you can find the game [here](https://angelmikeal.github.io/fend-arcade-game/)
+you can find the game [Here](https://angelmikeal.github.io/fend-arcade-game/)
