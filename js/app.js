@@ -454,7 +454,7 @@ function count() {
 
 // RESET FUNCTION THAT JUST RELOADS THE PAGE
 function reset() {
-    location.reload(false);
+    location = location;
 }
 
 // GAME OVER FUNCTION THAT THROWS A RENCH INTO THE ENGINE I DONT KNOW WHY IT WORKS
