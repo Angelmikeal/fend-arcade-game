@@ -8,13 +8,9 @@ let seconds = $('.seconds');
 let sec = 0;
 let mins = 0;
 let hours = 0;
-
-let starSfx = new Audio('./sfx/star-pick-up.mp3');
 let move = new Audio('./sfx/move.wav');
 let hit = new Audio('./sfx/player-hit.wav');
-let powerUp = new Audio('./sfx/power-up.wav');
 let levelUp = new Audio('./sfx/level-up.wav');
-let crush = new Audio('./sfx/bug-kill.wav');
 
 
 // SPRITE SELECTION SYSTEM
@@ -56,7 +52,7 @@ $('#start').click(function (e) {
         window.gameInit();
     }
 
-    
+
 })
 
 
@@ -91,7 +87,6 @@ class Enemy {
         if ((this.x + 50) >= player.x && (this.x - 50) <= player.x && player.hasBlueGem === false) {
             if (player.y === this.y) {
                 if (player.hasRock === true) {
-                    crush.play();
                     this.x = 3000;
                     player.hasRock = false;
                     player.hasItem = false;
@@ -183,29 +178,30 @@ class PlayerFunction {
 
     handleInput(direction) {
         if (direction === 'left' && sfx === true) {
-            move.play();
             if (this.x > 50) {
+                move.play();
                 this.x -= 101;
             }
         }
 
         if (direction === 'right' && sfx === true) {
-            move.play();
             if (this.x < 350) {
+                move.play();
                 this.x += 101;
             }
         }
 
         if (direction === 'up' && sfx === true) {
-            move.play();
             if (this.y <= 400) {
+                move.play();
                 this.y -= 83;
             }
         }
 
         if (direction === 'down' && sfx === true) {
-            move.play();
+           
             if (this.y < 390) {
+                move.play();
                 this.y += 83;
             }
         }
@@ -265,7 +261,6 @@ class itemConstructor {
                 if ((player.y === 310.5 && this.y === 373.5) || (player.y === 227.5 && this.y === 290.5) || (player.y === 144.5 && this.y === 207.5) || (player.y === 61.5 && this.y === 124.5)) {
                     // CHECK ITEM AND GIVE POWER UP
                     if (this === blueGem) {
-                        powerUp.play();
                         player.hasBlueGem = true;
                         tracker.itempresent = false;
                         player.hasItem = true;
@@ -277,7 +272,6 @@ class itemConstructor {
                     }
 
                     if (this === orangeGem) {
-                        powerUp.play();
                         player.hasOrangeGem = true;
                         tracker.itempresent = false;
                         player.hasItem = true;
@@ -289,7 +283,6 @@ class itemConstructor {
                     }
 
                     if (this === greenGem) {
-                        powerUp.play();
                         player.hasGreenGem = true;
                         tracker.itempresent = false;
                         tracker.itemAvailable -= 1;
@@ -301,7 +294,6 @@ class itemConstructor {
                     }
 
                     if (this === rock) {
-                        powerUp.play();
                         player.hasRock = true;
                         tracker.itempresent = false;
                         player.hasItem = true;
@@ -313,14 +305,12 @@ class itemConstructor {
                     }
 
                     if (this === heart) {
-                        powerUp.play();
                         tracker.itemAvailable -= 1;
                         tracker.itempresent = false;
                         player.life += 1;
                     }
 
                     if (this === star) {
-                        starSfx.play();
                         if (tracker.starToPick > 0.5) {
                             tracker.starPresent = false;
                             tracker.starToPick -= 1;
