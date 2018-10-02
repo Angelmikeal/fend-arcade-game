@@ -55,6 +55,8 @@ $('#start').click(function (e) {
         $('.modal-begin').addClass('close');
         window.gameInit();
     }
+
+    
 })
 
 
